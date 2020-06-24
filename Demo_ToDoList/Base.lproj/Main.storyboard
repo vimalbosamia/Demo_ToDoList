@@ -192,7 +192,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="33g-W4-Jy1"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eRj-qz-Q07"/>
+                    <navigationItem key="navigationItem" id="eRj-qz-Q07">
+                        <barButtonItem key="rightBarButtonItem" title="Image Upload" id="0Sn-xF-gVE">
+                            <connections>
+                                <action selector="btnActionUploadImage:" destination="47K-tX-hU5" id="dGJ-pc-xrG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="txtTitle" destination="lAe-Bd-IqP" id="PX8-4z-ZoD"/>
                         <outlet property="txtViewDesc" destination="HAd-Ph-xjG" id="032-fB-TOS"/>

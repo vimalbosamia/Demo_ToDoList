@@ -3,9 +3,10 @@
     <entity name="ToDoList" representedClassName="ToDoList" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="done" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ToDoList" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="ToDoList" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

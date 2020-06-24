@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 class ViewController: UIViewController {
     
-    var listArray : [ToDoList] = []
     var list : [ToDoList] = []
     var searchedList : [ToDoList] = []
     
@@ -62,11 +61,14 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource{
         cell.detailTextLabel?.numberOfLines = 0
         cell.textLabel?.textColor = .black
         cell.detailTextLabel?.textColor = .black
+        
         if self.isSearching == true {
             
             cell.textLabel?.text = searchedList[indexPath.row].title
             cell.detailTextLabel?.text = searchedList[indexPath.row].description
             cell.accessoryType = (searchedList[indexPath.row].done ?? 0) == 1 ? .checkmark : .none
+            let image = UIImage(data: (searchedList[indexPath.row].image ?? jpegdata)!)
+            cell.imageView?.image = image?.resized(to: CGSize(width: 20, height: 20))
         } else {
             cell.textLabel?.text = list[indexPath.row].title
             cell.detailTextLabel?.text = list[indexPath.row].desc
@@ -76,7 +78,8 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource{
             }else{
                 cell.backgroundColor = .white
             }
-            
+            let image = UIImage(data: (list[indexPath.row].image ?? jpegdata)!)
+            cell.imageView?.image = image?.resized(to: CGSize(width: 50, height: 50))
             cell.accessoryType = (list[indexPath.row].done ?? 0) == 1 ? .checkmark : .none
         }
         
@@ -149,5 +152,12 @@ extension ViewController : UISearchBarDelegate{
         }
         
         self.toDoListTableView.reloadData()
+    }
+}
+extension UIImage {
+    func resized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
     }
 }
